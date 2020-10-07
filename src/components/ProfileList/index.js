@@ -1,30 +1,28 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router'
 
 import { ProfileContext } from '../../context/profile-context';
+import Card from '../UI/Card'
 import classes from './index.module.css';
 
 const ProfileList = props => {
     const filteredProfiles = useContext(ProfileContext).filteredProfiles;
+
+    const goToProfile = id => {
+        props.history.push(`/profile/${id}`);
+    };
 
     let listContent = "Loading profiles...";
     if (filteredProfiles) {
         listContent = filteredProfiles.map(profile => {
             return (
                 <li key={profile.login.uuid} className={classes.profileList__item}>
-                    <Link to={`/profile/${profile.login.uuid}`} className={classes.profileList__card}>
-                        <img
-                            className={classes.profileList__photo} 
-                            src={profile.picture.large} 
-                            alt={`${profile.name.first} ${profile.name.first}`} 
-                        />
-                        <div className={classes.profileList__title}>
-                            {profile.name.first} {profile.name.last}
-                        </div>
-                        <div className={classes.profileList__location}>
-                            {profile.location.city}
-                        </div>
-                    </Link>
+                    <Card 
+                        image={profile.picture.large}
+                        title={`${profile.name.first} ${profile.name.last}`}
+                        subtitle={profile.location.city}
+                        clicked={() => goToProfile(profile.login.uuid)}
+                    />
                 </li>
             );
         });
@@ -37,4 +35,4 @@ const ProfileList = props => {
     );
 }
 
-export default ProfileList;
+export default withRouter(ProfileList);

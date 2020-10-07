@@ -20,7 +20,6 @@ const ProfileControls = props => {
                 value={searchValue}
                 onChange={event => filterProfilesByName(event.target.value)} 
             />
-
             <Input 
                 elementType="select"
                 value={selectedGender}
@@ -31,16 +30,6 @@ const ProfileControls = props => {
                     {value: "female", displayValue: "Female"},
                 ]}
             />
-
-            {/* <select 
-                value={selectedGender} 
-                onChange={event => filterProfilesByGender(event.target.value)}
-            >
-                <option value="all">Male &amp; Female</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select> */}
-
             <Button onClick={sortProfiles}>
                 { sortOrder === "asc" ? "Ascending" : "Descending" }
             </Button>

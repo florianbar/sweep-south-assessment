@@ -6,32 +6,3 @@
     display: inline-block;
     padding: 10px;
 }
-
-.profileList__card {
-    display: block;
-    width: 200px;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 3px 0px rgba(0,0,0,0.2);
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-}
-
-.profileList__card:hover {
-    box-shadow: 0 2px 15px 0px rgba(0,0,0,0.2);
-}
-
-.profileList__photo {
-    border-radius: 100%;
-}
-
-.profileList__title {
-    font-weight: 700;
-}
-
-.profileList__location {
-    color: #999;
-    font-style: italic;
-}
