@@ -6,7 +6,7 @@ import Profile from './containers/Profile';
 import ProfileProvider from "./context/profile-context";
 import './App.css';
 
-function App() {
+const App = props => {
   return (
     <div className="App">
       <div className="container">

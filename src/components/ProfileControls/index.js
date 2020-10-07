@@ -18,19 +18,19 @@ const ProfileControls = props => {
                 type="text"
                 placeholder="Search by name..." 
                 value={searchValue}
-                onChange={event => filterProfilesByName(event.target.value)} 
+                change={event => filterProfilesByName(event.target.value)} 
             />
             <Input 
                 elementType="select"
                 value={selectedGender}
-                onChange={event => filterProfilesByGender(event.target.value)} 
+                change={event => filterProfilesByGender(event.target.value)} 
                 options={[
                     {value: "all", displayValue: "Male & Female"},
                     {value: "male", displayValue: "Male"},
                     {value: "female", displayValue: "Female"},
                 ]}
             />
-            <Button onClick={sortProfiles}>
+            <Button clicked={sortProfiles}>
                 { sortOrder === "asc" ? "Ascending" : "Descending" }
             </Button>
         </React.Fragment>

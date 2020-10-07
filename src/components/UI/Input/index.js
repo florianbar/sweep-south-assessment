@@ -11,7 +11,7 @@ const Input = props => {
                 <select 
                     className={classes.input}
                     value={props.value}
-                    onChange={props.onChange}
+                    onChange={props.change}
                 >
                     {props.options.map(option => (
                         <option key={option.value} value={option.value}>
@@ -28,7 +28,7 @@ const Input = props => {
                     className={classes.input} 
                     type={props.type}
                     value={props.value}
-                    onChange={props.onChange} 
+                    onChange={props.change} 
                     placeholder={props.placeholder}
                 />
             );

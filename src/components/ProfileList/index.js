@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router-dom'
 
 import { ProfileContext } from '../../context/profile-context';
 import Card from '../UI/Card'
@@ -18,7 +18,7 @@ const ProfileList = props => {
             return (
                 <li key={profile.login.uuid} className={classes.profileList__item}>
                     <Card 
-                        image={profile.picture.large}
+                        image={profile.picture.medium}
                         title={`${profile.name.first} ${profile.name.last}`}
                         subtitle={profile.location.city}
                         clicked={() => goToProfile(profile.login.uuid)}

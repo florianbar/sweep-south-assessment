@@ -6,7 +6,7 @@ const Button = props => {
     return (
         <button 
             className={classes.button} 
-            onClick={props.onClick}
+            onClick={props.clicked}
         >
             {props.children}
         </button>
