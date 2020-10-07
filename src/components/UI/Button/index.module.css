@@ -1,0 +1,13 @@
+.button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    background-color: lightgreen;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.button:hover {
+    cursor: pointer;
+}

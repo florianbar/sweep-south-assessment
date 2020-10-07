@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 
 import { ProfileContext } from '../../context/profile-context';
+import Input from '../UI/Input';
+import Button from '../UI/Button';
 
 const ProfileControls = props => {
     const searchValue = useContext(ProfileContext).searchValue;
@@ -12,25 +14,36 @@ const ProfileControls = props => {
 
     return (
         <React.Fragment>
-            <input 
-                type="text" 
+            <Input 
+                type="text"
                 placeholder="Search by name..." 
-                value={searchValue} 
+                value={searchValue}
                 onChange={event => filterProfilesByName(event.target.value)} 
             />
 
-            <select 
+            <Input 
+                elementType="select"
+                value={selectedGender}
+                onChange={event => filterProfilesByGender(event.target.value)} 
+                options={[
+                    {value: "all", displayValue: "Male & Female"},
+                    {value: "male", displayValue: "Male"},
+                    {value: "female", displayValue: "Female"},
+                ]}
+            />
+
+            {/* <select 
                 value={selectedGender} 
                 onChange={event => filterProfilesByGender(event.target.value)}
             >
                 <option value="all">Male &amp; Female</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
-            </select>
+            </select> */}
 
-            <button onClick={sortProfiles}>
+            <Button onClick={sortProfiles}>
                 { sortOrder === "asc" ? "Ascending" : "Descending" }
-            </button>
+            </Button>
         </React.Fragment>
     );
 }
