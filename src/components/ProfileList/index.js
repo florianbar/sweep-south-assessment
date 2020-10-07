@@ -6,7 +6,7 @@ import Card from '../UI/Card'
 import classes from './index.module.css';
 
 const ProfileList = props => {
-    const filteredProfiles = useContext(ProfileContext).filteredProfiles;
+    const { filteredProfiles } = useContext(ProfileContext);
 
     const goToProfile = id => {
         props.history.push(`/profile/${id}`);

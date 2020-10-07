@@ -9,7 +9,7 @@ const Profile = props => {
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const getProfile = useContext(ProfileContext).getProfile;
+    const { getProfile } = useContext(ProfileContext);
 
     useEffect(() => {
         setProfile(getProfile(props.match.params.id));
@@ -69,11 +69,7 @@ const Profile = props => {
         );
     }
 
-    return (
-        <div>
-            {!loading && !profile ? <Redirect to="/" /> : profileContent}
-        </div>
-    );
+    return !loading && !profile ? <Redirect to="/" /> : profileContent;
 }
 
 export default Profile;

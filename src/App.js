@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Profiles from './containers/Profiles';
 import Profile from './containers/Profile';
@@ -13,7 +13,8 @@ const App = props => {
         <ProfileProvider>
           <Switch>
             <Route path="/profile/:id" component={Profile} />
-            <Route path="/" component={Profiles} />
+            <Route path="/" exact component={Profiles} />
+            <Redirect to="/" />
           </Switch>
         </ProfileProvider>
       </div>

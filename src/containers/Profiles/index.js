@@ -5,7 +5,7 @@ import ProfileControls from '../../components/ProfileControls';
 import ProfileList from '../../components/ProfileList';
 
 const Profiles = props => {
-    const fetchProfiles = useContext(ProfileContext).fetchProfiles;
+    const { fetchProfiles } = useContext(ProfileContext);
 
     useEffect(() => {
         fetchProfiles();

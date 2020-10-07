@@ -5,12 +5,14 @@ import Input from '../UI/Input';
 import Button from '../UI/Button';
 
 const ProfileControls = props => {
-    const searchValue = useContext(ProfileContext).searchValue;
-    const selectedGender = useContext(ProfileContext).selectedGender;
-    const sortOrder = useContext(ProfileContext).sortOrder;
-    const filterProfilesByName = useContext(ProfileContext).filterProfilesByName;
-    const filterProfilesByGender = useContext(ProfileContext).filterProfilesByGender;
-    const sortProfiles = useContext(ProfileContext).sortProfiles;
+    const { 
+        searchValue,
+        selectedGender,
+        sortOrder,
+        filterProfilesByName,
+        filterProfilesByGender,
+        sortProfiles 
+    } = useContext(ProfileContext);
 
     return (
         <React.Fragment>
