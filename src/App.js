@@ -9,12 +9,14 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <ProfileProvider>
-        <Switch>
-          <Route path="/profile/:id" component={Profile} />
-          <Route path="/" component={Profiles} />
-        </Switch>
-      </ProfileProvider>
+      <div className="container">
+        <ProfileProvider>
+          <Switch>
+            <Route path="/profile/:id" component={Profile} />
+            <Route path="/" component={Profiles} />
+          </Switch>
+        </ProfileProvider>
+      </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { ProfileContext } from '../../context/profile-context';
 const Profile = props => {
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
-    
+
     const getProfile = useContext(ProfileContext).getProfile;
 
     useEffect(() => {
@@ -18,11 +18,11 @@ const Profile = props => {
     if (profile) {
         profileContent = (
             <React.Fragment>
+                <h1>{profile.name.first} {profile.name.last}</h1>
                 <img 
                     src={profile.picture.large} 
                     alt={`${profile.name.first} ${profile.name.first}`} 
                 />
-                <div>{profile.name.first} {profile.name.last}</div>
                 <div>{profile.location.city}</div>
             </React.Fragment>
         );
