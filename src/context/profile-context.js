@@ -20,10 +20,6 @@ export default props => {
     const [selectedGender, setSelectedGender] = useState("all");
     const [sortOrder, setSortOrder] = useState("asc");
 
-    useEffect(() => {
-        setFilteredProfiles(profiles);
-    }, [profiles, setFilteredProfiles]);
-
     const fetchProfiles = useCallback(() => {
         if (profiles === null) {
             axios.get(" https://randomuser.me/api/?results=20")
@@ -43,23 +39,22 @@ export default props => {
         return null;
     };
 
-    const filterProfilesByName = search => {
-        setSearchValue(search);
-        filterProfiles(search, selectedGender);
-    };
+    const updateFilteredProfiles = useCallback(() => {
+        let updatedFilteredProfiles = [...profiles];
 
-    const filterProfilesByGender = gender => {
-        setSelectedGender(gender);
-        filterProfiles(searchValue, gender, sortOrder);
-    };
+        // Search by name
+        if (searchValue.trim()) {
+            updatedFilteredProfiles = profiles.filter(profile => {
+                const searchVal = searchValue.toLowerCase();
+                const fullname = `${profile.name.first.toLowerCase()} ${profile.name.last.toLowerCase()}`;
+                return fullname.includes(searchVal);
+            });
+        }
 
-    const sortProfiles = () => {
-        setSortOrder(sortOrder === "desc" ? "asc" : "desc");
-        filterProfiles(searchValue, selectedGender, sortOrder);
-    };
-
-    const filterProfiles = (search, gender, sortOrder) => {
-        let updatedFilteredProfiles = profiles;
+        // Filter by gender
+        if (selectedGender !== "all") {
+            updatedFilteredProfiles = updatedFilteredProfiles.filter(profile => profile.gender === selectedGender);
+        }
 
         // Order by ascending or descending alphabetically
         updatedFilteredProfiles.sort((userA, userB) => {
@@ -70,21 +65,28 @@ export default props => {
             }
         });
 
-        // Search by name
-        if (search.trim()) {
-            updatedFilteredProfiles = profiles.filter(profile => {
-                const searchVal = search.toLowerCase();
-                const fullname = `${profile.name.first.toLowerCase()} ${profile.name.last.toLowerCase()}`;
-                return fullname.includes(searchVal);
-            });
-        }
-
-        // Filter by gender
-        if (gender !== "all") {
-            updatedFilteredProfiles = updatedFilteredProfiles.filter(profile => profile.gender === gender);
-        }
-
         setFilteredProfiles(updatedFilteredProfiles);
+    }, [profiles, sortOrder, searchValue, selectedGender]);
+
+    useEffect(() => {
+        if (profiles) {
+            updateFilteredProfiles();
+        }
+    }, [profiles, updateFilteredProfiles]);
+
+    const filterProfilesByName = search => {
+        setSearchValue(search);
+        updateFilteredProfiles();
+    };
+
+    const filterProfilesByGender = gender => {
+        setSelectedGender(gender);
+        updateFilteredProfiles();
+    };
+
+    const sortProfiles = () => {
+        setSortOrder(sortOrder === "desc" ? "asc" : "desc");
+        updateFilteredProfiles();
     };
 
     return (
