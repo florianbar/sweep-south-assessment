@@ -10,7 +10,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Tech
 
-### React Router
+### Routing
 I did not use Next.js, as I'm unfamiliar with it, but I know it's used for server-side rendering.
 Instead I used React Router to emulate the look and feel of multiple pages.
 
