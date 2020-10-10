@@ -22,4 +22,3 @@ For HTTP requests I used a library called Axios.
 
 ## Trade-offs
 - If there was more time I would have used TypeScript to document the code better and what types are expected.
-- Also the naming convention I used for the CSS follows the BEM methodology. I have used this a lot in the past with great success, but am not sure if it's usefull with styled components.
