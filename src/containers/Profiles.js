@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 
-import { ProfileContext } from '../../context/profile-context';
-import ProfileControls from '../../components/ProfileControls';
-import ProfileList from '../../components/ProfileList';
+import { ProfileContext } from '../context/profile-context';
+import ProfileControls from '../components/ProfileControls';
+import ProfileList from '../components/ProfileList';
 
 const Profiles = props => {
     const { fetchProfiles } = useContext(ProfileContext);

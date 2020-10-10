@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
-import { ProfileContext } from '../../context/profile-context';
-import Input from '../UI/Input';
-import Button from '../UI/Button';
+import { ProfileContext } from '../context/profile-context';
+import Input from './UI/Input';
+import Button from './UI/Button';
 
 const ProfileControls = props => {
     const { 

@@ -1,9 +1,38 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { ProfileContext } from '../../context/profile-context';
-import Button from '../../components/UI/Button'
-import classes from './index.module.css';
+import { ProfileContext } from '../context/profile-context';
+import Button from '../components/UI/Button'
+
+const StyledProfile = styled.div`
+    width: 100%;
+    max-width: 350px;
+    margin: 40px auto 0;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 3px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+
+    .photo { border-radius: 100%; margin-top: -30px; }
+    .title { margin-top: 0; }
+    
+    .info {
+        width: 100%;
+        margin: 0 0 10px;
+        border-collapse: collapse;
+        font-size: 14px;
+        text-align: left;
+    }
+    
+    .info tr:nth-child(odd) { background-color: #f5f5f5; } 
+    .info tr td { padding: 6px; } 
+    
+    .info tr td:first-child {
+        font-weight: 600;
+        text-align: right;
+    } 
+`;
 
 const Profile = props => {
     const [profile, setProfile] = useState(null);
@@ -23,16 +52,16 @@ const Profile = props => {
     let profileContent = "Loading profile...";
     if (profile) {
         profileContent = (
-            <div className={classes.profile}>
+            <StyledProfile>
                 <img 
-                    className={classes.profile__photo}
+                    className="photo"
                     src={profile.picture.large} 
                     alt={`${profile.name.first} ${profile.name.first}`} 
                 />
-                <h2 className={classes.profile__title}>
+                <h2 className="title">
                     {profile.name.first} {profile.name.last}
                 </h2>
-                <table className={classes.profile__info}>
+                <table className="info">
                     <tbody>
                         <tr>
                             <td>Cell:</td>
@@ -65,7 +94,7 @@ const Profile = props => {
                     </tbody>
                 </table>
                 <Button clicked={goBack}>Back</Button>
-            </div>
+            </StyledProfile>
         );
     }
 

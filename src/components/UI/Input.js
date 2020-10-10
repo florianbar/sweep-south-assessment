@@ -1,6 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import classes from './index.module.css';
+const styles = `
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+`;
+const StyledInput = styled.input`${styles}`;
+const StyledSelect = styled.select`${styles}`;
 
 const Input = props => {
     let inputElement = null;
@@ -8,24 +19,19 @@ const Input = props => {
     switch (props.elementType) {
         case "select":
             inputElement = (
-                <select 
-                    className={classes.input}
-                    value={props.value}
-                    onChange={props.change}
-                >
+                <StyledSelect value={props.value} onChange={props.change}>
                     {props.options.map(option => (
                         <option key={option.value} value={option.value}>
                             {option.displayValue}
                         </option>
                     ))}
-                </select>
+                </StyledSelect>
             );
             break;
 
         default:
             inputElement = (
-                <input 
-                    className={classes.input} 
+                <StyledInput 
                     type={props.type}
                     value={props.value}
                     onChange={props.change} 

@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { ProfileContext } from '../../context/profile-context';
-import Card from '../UI/Card'
-import classes from './index.module.css';
+import { ProfileContext } from '../context/profile-context';
+import Card from './UI/Card';
+
+const StyledUl = styled.ul`list-style-type: none;`;
+const StyledLi = styled.li`display: inline-block; padding: 10px;`;
 
 const ProfileList = props => {
     const { filteredProfiles } = useContext(ProfileContext);
@@ -16,22 +19,22 @@ const ProfileList = props => {
     if (filteredProfiles) {
         listContent = filteredProfiles.map(profile => {
             return (
-                <li key={profile.login.uuid} className={classes.profileList__item}>
+                <StyledLi key={profile.login.uuid}>
                     <Card 
                         image={profile.picture.medium}
                         title={`${profile.name.first} ${profile.name.last}`}
                         subtitle={profile.location.city}
                         clicked={() => goToProfile(profile.login.uuid)}
                     />
-                </li>
+                </StyledLi>
             );
         });
     }
 
     return (
-        <ul className={classes.profileList}>
+        <StyledUl>
             {listContent}
-        </ul>
+        </StyledUl>
     );
 }
 
